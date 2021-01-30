@@ -16,6 +16,8 @@
 
 import { syncItem } from '@/api/youku'
 
+import { sleep } from '@/utils/tool';
+
 export default {
   data() {
     return {
@@ -27,10 +29,13 @@ export default {
   methods: {
     onSubmit() {
       this.form.item_ids.split('\n').forEach(function(id, index) {
-        syncItem({ 'id': id, 'source_type': 'YOUKU' }).catch(err => {
-          console.error(id, err.message())
+        sleep(1000).then(() => {
+          syncItem({ 'id': id, 'source_type': 'YOUKU' }).then(() => {
+            console.log('Item Join Queue Finished!', index, id)
+          }).catch(err => {
+            console.error(id, err.message)
+          })
         })
-        console.log('Item Join Queue Finished!', index, id)
       })
     }
   }
