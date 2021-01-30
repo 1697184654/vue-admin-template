@@ -6,3 +6,11 @@ export function getQueueLen() {
     method: 'get'
   })
 }
+
+export function syncItem(param) {
+  return request({
+    url: '/data/youku/sync/episode',
+    method: 'get',
+    param: param
+  })
+}
