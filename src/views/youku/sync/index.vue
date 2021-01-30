@@ -29,8 +29,8 @@ export default {
   methods: {
     onSubmit() {
       this.form.item_ids.split('\n').forEach(function(id, index) {
-        sleep(1000).then(() => {
-          syncItem({ 'id': id, 'source_type': 'YOUKU' }).then(() => {
+        sleep(50).then(() => {
+          syncItem({ 'video_id': id, 'source_type': 'YOUKU' }).then(() => {
             console.log('Item Join Queue Finished!', index, id)
           }).catch(err => {
             console.error(id, err.message)

@@ -11,6 +11,6 @@ export function syncItem(param) {
   return request({
     url: '/data/youku/sync/episode',
     method: 'get',
-    param: param
+    params: param
   })
 }
