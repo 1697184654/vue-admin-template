@@ -76,6 +76,48 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/youku',
+    component: Layout,
+    redirect: '/youku/index',
+    name: '优酷管理',
+    meta: { title: '优酷管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'index',
+        name: 'YouKu',
+        component: () => import('@/views/youku/index'),
+        meta: { title: '队列管理', icon: 'form' }
+      },
+      {
+        path: 'sync',
+        name: 'Sync',
+        component: () => import('@/views/youku/sync/index'),
+        meta: { title: '同步管理', icon: 'form'}
+      }
+    ]
+  },
+  {
+    path: '/iqiyi',
+    component: Layout,
+    redirect: '/iqiyi/index',
+    name: '爱奇艺管理',
+    meta: { title: '爱奇艺管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'index',
+        name: 'IQiYi',
+        component: () => import('@/views/iqiyi/index'),
+        meta: { title: '队列管理', icon: 'form' }
+      },
+      {
+        path: 'sync',
+        name: 'Sync',
+        component: () => import('@/views/iqiyi/sync/index'),
+        meta: { title: '同步管理', icon: 'form' }
+      }
+    ]
+  },
 
   {
     path: '/form',
@@ -165,7 +207,7 @@ export const constantRoutes = [
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })

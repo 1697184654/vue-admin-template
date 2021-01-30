@@ -32,6 +32,12 @@ module.exports = {
   devServer: {
     port: port,
     open: true,
+    proxy: {
+      '^/data': {
+        target: 'http://ncms.funtv.bestv.com.cn',
+        changeOrigin: true
+      }
+    },
     overlay: {
       warnings: false,
       errors: true
